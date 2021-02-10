@@ -6,9 +6,9 @@
 
 const recursiveCounter = function(totalAmountInPennies, coinChangeArr = [], counter = 0) {
     const coins = [25, 10, 5, 1];
-    console.log("totalAmountInPennies", totalAmountInPennies);
-    console.log("coinChangeArr", coinChangeArr);
-    console.log("counter", counter);
+    // console.log("totalAmountInPennies", totalAmountInPennies);
+    // console.log("coinChangeArr", coinChangeArr);
+    // console.log("counter", counter);
     if (counter >= 4) {
         return coinChangeArr;
     } else {
@@ -25,14 +25,14 @@ console.log(recursiveCounter(101));
 // This is an example of a for loop (not tested, so it may have errors) that does the same task as the recursive coin counter function. The point is to demonstrate that a for loop has side effects, while a recursive function does not.
 //////////////////////////////////////////////
 
-// let amountInPennies = 100;
-// let coinchangeArr = [];
-// for (let i = 0; i < 4; i++) {
-//     let coins = [25, 10, 5, 1];
-//     const amount = Math.floor(amountInPennies / coins[i]);
-//     const amountInPennies = amountInPennies - (amount*coins[i]);
-//     coinChangeArr.push(amount);
-// }
+let amountInPennies = 100;
+let coinchangeArr = [];
+for (let i = 0; i < 4; i++) {
+    let coins = [25, 10, 5, 1];
+    const amount = Math.floor(amountInPennies / coins[i]);
+    const amountInPennies = amountInPennies - (amount*coins[i]);
+    coinChangeArr.push(amount);
+}
 
 
 
@@ -66,7 +66,9 @@ const counter = function(dollarAmount) {
 }
 
 const quarterCalculator = counter(2.22)(222)(22)(0)(2);
-console.log(quarterCalculator);
+
+const inQuarters = counter(2.22);
+// console.log(quarterCalculator);
 
 
 
@@ -88,11 +90,11 @@ const counterRoundTwo = function(countBy) {
 }
 
 // This is an example of using a closure to create a function factory. 
-// let quartersCounter = counterRoundTwo(25);
-// let dimesCounter = counterRoundTwo(10);
-// let nicklesCounter = counterRoundTwo(5);
-// let penniesCounter = counterRoundTwo(1);
-// console.log(quartersCounter(1.50));
+let quartersCounter = counterRoundTwo(25);
+let dimesCounter = counterRoundTwo(10);
+let nicklesCounter = counterRoundTwo(5);
+let penniesCounter = counterRoundTwo(1);
+console.log(quartersCounter(1.50));
 // console.log(counterRoundTwo(25)(1.50));
 // console.log(dimesCounter(.9));
 // console.log(nicklesCounter(.30));

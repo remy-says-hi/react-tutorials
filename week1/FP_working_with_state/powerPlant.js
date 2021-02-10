@@ -19,7 +19,10 @@ export const storeState = (initialState = {}) => {
   }
 }
 
-const initialValues = {soil: 0, water: 0, light: 0};
+const initialValues = {soil: 4, water: 0, light: 0};
+const initialValues2 = {soil: 0, water: 4, light: 0};
+const initialValues3 = {soil: 0, water: 0, light: 4};
+
 const fern = storeState(initialValues);
 const feed = changeState("soil");
 const blueFood = feed(5);
@@ -28,7 +31,7 @@ const currentState = fern();
 const newFernState = fern(blueFood);
 console.log(newFernState);
 // This is a function factory. We can easily create more specific functions that alter a plant's soil, water, and light to varying degrees.
-export const changeState = (prop) => {
+export const changeNumberState = (prop) => {
   return (value) => {
     return (state) => ({
       ...state,
@@ -37,10 +40,20 @@ export const changeState = (prop) => {
   }
 }
 
-export const changeState = (prop) => {
+export const changeStringState = (prop) => {
+  return (value) => {
+    return (state) => ({
+      ...state,
+      [prop] : value
+    })
+  }
+}
+
+const initialValues = {soil: 0, water: 0, light: 0, plantType: "fern"};
+export const changeFernState = (prop) => {
   return (value) => {
     return (state) => {
-      if (currentState.plantType === "fern") {
+      if (state.plantType === "fern") {
         return {
         ...state,
         [prop] : (state[prop] || 0) + value
@@ -60,9 +73,10 @@ export const changeState = (prop) => {
 // This allows us to create new plants
 
 // === function, that has access to a currentState object
+// const stateControl = storeState(initialValues);
 const sunFlower = storeState(initialValues);
 
-console.log("just getting my current state", fern());
+console.log("just getting my current state", sunFlower());
 
 // We create two functions using our function factory. We could easily create many more.
 

@@ -7,16 +7,25 @@
 // > painter3.paints()
 // "Paints red!"
 
-const paint = function(color) {
+const paint = function(color, color2) {
   return {
     paints : function() {
-      return `Paints ${color}!`
+      return `Paints ${color} and ${color2}!`
     }
   }
 }
 
 const painter1 = paint("green");
-console.log(painter1.paints())
+
+console.log(painter1.paints()) /////
+
+const painter2 = paint("yellow");
+
+console.log(painter2.paints()) /////
+
+const painter3 = paint("red");
+
+console.log(painter3.paints()) /////
 
 /////////////////////////////////
 // arrow function
