@@ -4,7 +4,7 @@ import TicketList from './TicketList';
 import TicketDetail from './TicketDetail';
 import EditTicketForm from './EditTicketForm';
 
-
+// The render() method in this component varies from how the curriculum shows how to set it up!
 
 class TicketControl extends React.Component {
 
