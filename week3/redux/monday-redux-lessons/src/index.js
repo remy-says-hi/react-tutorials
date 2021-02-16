@@ -11,12 +11,24 @@ import { v4 } from 'uuid';
 // TEST DATA
 const testId = v4();
 const initialState = {
-  masterTicketList: {},
+  masterTicketList: {
+    [testId] : {
+      names: "Shawn and Brooke",
+      location: "by the plant",
+      issue: "halp!",
+      quantity: 22,
+      id: testId
+    }
+  },
   formVisibleOnPage: false
 }
 //////
 
-const store = createStore(rootReducer, initialState);
+const store = createStore(
+  rootReducer, 
+  initialState, 
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 store.subscribe(() =>
   console.log(store.getState())

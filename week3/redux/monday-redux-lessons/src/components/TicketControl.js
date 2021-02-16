@@ -51,6 +51,7 @@ class TicketControl extends React.Component {
   }
 
   handleChangingSelectedTicket = (id) => {
+    console.log("click")
     const selectedTicket = this.props.masterTicketList[id];
     this.setState({selectedTicket: selectedTicket});
   }
@@ -67,6 +68,23 @@ class TicketControl extends React.Component {
 
   handleEditClick = () => {
     this.setState({editing: true});
+  }
+
+  handleBuyTicket = (id) => {
+    const obj = this.props.masterTicketList[id];
+    const newQuantity = obj.quantity -1
+    console.log(newQuantity);
+    const action = {
+      type: 'ADD_TICKET',
+      id: obj.id,
+      names: obj.names,
+      location: obj.location,
+      issue: obj.issue,
+      quantity: newQuantity
+    }
+    obj.quantity -= 1;
+    this.props.dispatch(action);
+    this.setState({selectedTicket: obj})
   }
 
   handleEditingTicketInList = (ticketToEdit) => {
@@ -96,7 +114,8 @@ class TicketControl extends React.Component {
       currentlyVisibleState = 
       <TicketDetail 
         ticket = {this.state.selectedTicket} 
-        onClickingDelete = {this.handleDeletingTicket} 
+        onClickingDelete = {this.handleDeletingTicket}
+        onBuying = {this.handleBuyTicket}
         onClickingEdit = {this.handleEditClick} />
       buttonText = "Return to Ticket List";
     } else if (this.props.formVisibleOnPage) {
@@ -122,11 +141,14 @@ TicketControl.propTypes = {
 };
 
 const mapStateToProps = storeState => {
+  // filter
+  // sort
+  // change from object to array
   return {
     masterTicketList: storeState.masterTicketList,
     formVisibleOnPage: storeState.formVisibleOnPage,
     // defaultTicket: storeState.masterTicketList["0"],
-    // location: storeState.masterTicketList["0"].location
+    // locationOfDefaultTicket: storeState.masterTicketList["0"].location
   }
 }
 
