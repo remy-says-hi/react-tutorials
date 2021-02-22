@@ -1,7 +1,7 @@
 import * as c from './../actions/ActionTypes';
 
 export default (state = {}, action) => {
-  const { names, location, issue, id } = action;
+  const { names, location, quantity, issue, id } = action;
   switch (action.type) {
   case c.ADD_TICKET:
     return Object.assign({}, state, {
@@ -9,9 +9,12 @@ export default (state = {}, action) => {
         names: names,
         location: location,
         issue: issue,
+        quantity: quantity,
         id: id
       }
     });
+
+
     // return {...state, 
     //     [id]: {
     //       names: names,

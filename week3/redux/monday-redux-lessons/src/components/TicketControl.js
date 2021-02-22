@@ -122,7 +122,10 @@ class TicketControl extends React.Component {
       currentlyVisibleState = <NewTicketForm onNewTicketCreation={this.handleAddingNewTicketToList}  />;
       buttonText = "Return to Ticket List";
     } else {
-      currentlyVisibleState = <TicketList ticketList={this.props.masterTicketList} onTicketSelection={this.handleChangingSelectedTicket} />;
+      currentlyVisibleState = <TicketList 
+        ticketList={this.props.masterTicketList} 
+        onTicketSelection={this.handleChangingSelectedTicket} 
+      />;
       buttonText = "Add Ticket";
     }
     return (
@@ -145,8 +148,8 @@ const mapStateToProps = storeState => {
   // sort
   // change from object to array
   return {
-    masterTicketList: storeState.masterTicketList,
-    formVisibleOnPage: storeState.formVisibleOnPage,
+    masterTicketList: storeState.masterTicketList2,
+    formVisibleOnPage: storeState.formVisibleOnPage2,
     // defaultTicket: storeState.masterTicketList["0"],
     // locationOfDefaultTicket: storeState.masterTicketList["0"].location
   }

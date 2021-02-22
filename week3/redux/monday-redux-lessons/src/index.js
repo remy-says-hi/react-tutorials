@@ -11,7 +11,7 @@ import { v4 } from 'uuid';
 // TEST DATA
 const testId = v4();
 const initialState = {
-  masterTicketList: {
+  masterTicketList2: {
     [testId] : {
       names: "Shawn and Brooke",
       location: "by the plant",
@@ -20,7 +20,7 @@ const initialState = {
       id: testId
     }
   },
-  formVisibleOnPage: false
+  formVisibleOnPage2: false
 }
 //////
 

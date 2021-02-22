@@ -1,3 +1,4 @@
+
 export default (state = {}, action) => {
   const { names, location, issue, quantity, id } = action;
   switch (action.type) {

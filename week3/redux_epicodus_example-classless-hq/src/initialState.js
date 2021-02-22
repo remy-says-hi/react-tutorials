@@ -9,12 +9,14 @@ export default {
       names: 'Ryan & Aimen',
       location: '4b',
       issue: 'Redux action is not working correctly.',
+      quantity: 22,
       id: id1 
     },
     [id2]: {
       names: 'Jasmine and Justine',
       location: '2a',
       issue: 'Reducer has side effects.',
+      quantity: 22,
       id: id2
     }
   }

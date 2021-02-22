@@ -25,6 +25,31 @@ function TicketControl(props) {
     }
   }
 
+  const handleBuyTicket = (id) => {
+    const obj = props.masterTicketList[id];
+    const newQuantity = obj.quantity -1
+    console.log(newQuantity);
+    const action = {
+      type: 'ADD_TICKET',
+      id: obj.id,
+      names: obj.names,
+      location: obj.location,
+      issue: obj.issue,
+      quantity: newQuantity
+    }
+    obj.quantity -= 1;
+    props.dispatch(action);
+    const action2 = {
+      type: 'ADD_SELECTED_TICKET',
+      id: obj.id,
+      names: obj.names,
+      location: obj.location,
+      issue: obj.issue,
+      quantity: newQuantity
+    }
+    props.dispatch(action2);
+  }
+
   const handleAddingNewTicketToList = (newTicket) => {
     const { dispatch } = props;
     const action = a.addTicket(newTicket);
@@ -74,6 +99,7 @@ function TicketControl(props) {
     <TicketDetail 
       ticket={props.selectedTicket} 
       onClickingDelete={handleDeletingTicket} 
+      onBuying={handleBuyTicket}
       onClickingEdit={handleEditClick} />
     buttonText = "Return to Ticket List";
   } else if (props.formVisibleOnPage) {

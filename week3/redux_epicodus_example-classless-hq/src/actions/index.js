@@ -14,12 +14,13 @@ export const toggleIsEditing = () => ({
 })
 
 export const addTicket = (ticket) => {
-  const { names, location, issue, id } = ticket;
+  const { names, location, issue, id, quantity } = ticket;
   return {
     type: c.ADD_TICKET,
     names: names,
     location: location,
     issue: issue,
+    quantity: (quantity || 20),
     id: id
   }
 }
@@ -40,12 +41,13 @@ export const removeSelectedTicket = () => {
 }
 
 export const addSelectedTicket = (ticket) => {
-  const { names, location, issue, id } = ticket;
+  const { names, location, issue, quantity, id } = ticket;
   return {
     type: c.ADD_SELECTED_TICKET,
     names: names,
     location: location,
     issue: issue,
+    quantity: quantity,
     id: id
   }
 }
