@@ -38,9 +38,7 @@ class TicketControl extends React.Component {
   }
 
   handleChangingSelectedTicket = (id) => {
-    this.props.firestore.get({collection: 'tickets', doc: id})
-    .then((ticket) => {
-      console.log(ticket)
+    this.props.firestore.get({collection: 'tickets', doc: id}).then((ticket) => {
       const firestoreTicket = {
         names: ticket.get("names"),
         location: ticket.get("location"),

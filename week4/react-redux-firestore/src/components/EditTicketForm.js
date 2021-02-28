@@ -16,8 +16,7 @@ function EditTicketForm (props) {
       location: event.target.location.value,
       issue: event.target.issue.value
     }
-    firestore.update({collection: 'tickets', doc: ticket.id }, propertiesToUpdate)
-    // return;
+    return firestore.update({collection: 'tickets', doc: ticket.id }, propertiesToUpdate)
   }
 
   return (

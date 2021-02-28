@@ -60,8 +60,10 @@ class TicketControl extends React.Component {
   }
 
   handleChangingSelectedTicket = (id) => {
-    this.props.firestore.collection('tickets').doc(id).get().then((ticket) => {
-    this.props.firestore.get({collection: 'tickets', doc: id}).then((ticket) => {
+    this.props.firestore.collection('tickets').doc(id).get()
+    .then((ticket) => {
+    this.props.firestore.get({collection: 'tickets', doc: id})
+    .then((ticket) => {
       const firestoreTicket = {
         names: ticket.get("names"),
         location: ticket.get("location"),
@@ -75,7 +77,9 @@ class TicketControl extends React.Component {
       this.setState({selectedTicket: firestoreTicket });
     });
     // this.setState({selectedTicket: this.props.reduxFirestore.data.tickets[id] });
+    })
   }
+  
 
   handleEditClick = () => {
     this.setState({editing: true});
